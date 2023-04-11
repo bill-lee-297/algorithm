@@ -9,11 +9,15 @@ function solution(gems) {
 
     while (start < gems.length && end < gems.length) {
         // 두 포인터가 끝에 도달한다면 종료
+        console.log(collect);
         if (collect.size === gemKinds) {
             // 모든 보석을 구매할 수 있다면
+            console.log("end :: ", end, " start :: ", start);
             if (end - start < answer[1] - answer[0]) {
+                console.log("구간 갱신");
                 // 구간을 갱신
                 answer = [start + 1, end + 1];
+                console.log("answer :: ", answer);
             }
 
             collect.set(gems[start], collect.get(gems[start]) - 1); // 첫 번째 포인터에 해당하는 보석을 한 개 줄인다.
@@ -32,3 +36,5 @@ function solution(gems) {
 
     return answer; // 결과 반환
 }
+
+solution(["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]);
